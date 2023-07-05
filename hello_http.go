@@ -35,18 +35,3 @@ func redundantFunc(w http.ResponseWriter, d struct {
 }) (int, error) {
 	return fmt.Fprintf(w, "Hello, %s!", html.EscapeString(d.Name))
 }
-
-func foo() {
-	// FIXME
-	tag := 42
-	switch tag { // Noncompliant - default case is missing
-	case 0, 1, 2, 3:
-		foo()
-	case 4, 5, 6, 7:
-		bar()
-	}
-}
-
-func bar() {
-	// FIXME
-}
