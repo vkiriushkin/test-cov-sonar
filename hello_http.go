@@ -27,5 +27,11 @@ func HelloHTTP(w http.ResponseWriter, r *http.Request) {
 		fmt.Fprint(w, "Hello, World!")
 		return
 	}
-	fmt.Fprintf(w, "Hello, %s!", html.EscapeString(d.Name))
+	redundantFunc(w, d)
+}
+
+func redundantFunc(w http.ResponseWriter, d struct {
+	Name string `json:"name"`
+}) (int, error) {
+	return fmt.Fprintf(w, "Hello, %s!", html.EscapeString(d.Name))
 }
